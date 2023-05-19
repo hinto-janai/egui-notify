@@ -203,7 +203,7 @@ impl Toasts {
             let caption_galley = ctx.fonts(|f| {
                 f.layout(
                     toast.caption.clone(),
-                    FontId::proportional(16.),
+                    FontId::monospace(16.),
                     visuals.fg_stroke.color,
                     f32::INFINITY,
                 )
@@ -216,7 +216,7 @@ impl Toasts {
             let icon_width = caption_height / line_count as f32;
 
             // Create toast icon
-            let icon_font = FontId::proportional(icon_width);
+            let icon_font = FontId::monospace(icon_width);
             let icon_galley = if matches!(toast.level, ToastLevel::Info) {
                 Some(ctx.fonts(|f| f.layout("ℹ".into(), icon_font, INFO_COLOR, f32::INFINITY)))
             } else if matches!(toast.level, ToastLevel::Warning) {
@@ -237,7 +237,7 @@ impl Toasts {
 
             // Create closing cross
             let cross_galley = if toast.closable {
-                let cross_fid = FontId::proportional(icon_width);
+                let cross_fid = FontId::monospace(icon_width);
                 let cross_galley = ctx.fonts(|f| {
                     f.layout(
                         "❌".into(),
