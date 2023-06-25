@@ -187,7 +187,8 @@ impl Toasts {
             *held = false;
         }
 
-        let visuals = ctx.style().visuals.widgets.noninteractive;
+        let visuals = ctx.style().visuals.widgets.hovered;
+        let bg_fill = ctx.style().visuals.code_bg_color;
         let mut update = false;
 
         for (i, toast) in toasts.iter_mut().enumerate() {
@@ -282,7 +283,7 @@ impl Toasts {
             pos.x -= anim_offset * anchor.anim_side();
 
             // Draw background
-            p.rect_filled(rect, Rounding::same(4.), visuals.bg_fill);
+            p.rect_filled(rect, Rounding::same(4.), bg_fill);
 
             // Paint icon
             if let Some((icon_galley, true)) =
